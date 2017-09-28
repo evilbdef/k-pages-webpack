@@ -28,6 +28,7 @@ module.exports = {
     extensions: ['.js', '.hbs', '.json'],
     alias: {
       '@': resolve('src'),
+      'part': resolve('src/part'),
       'common': resolve('src/common'),
       'components': resolve('src/components')
     }

@@ -1,7 +1,7 @@
 const path = require('path')
-const webpack = require('webpack');
+const webpack = require('webpack')
 const merge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack.base.config');
+const baseWebpackConfig = require('./webpack.base.config')
 const config = require('../config')
 
 function resolve (dir) {
@@ -31,7 +31,5 @@ module.exports = merge(baseWebpackConfig, {
         exclude: /node_modules/
       }
     ]
-  },
-  plugins: [
-  ]
+  }
 })

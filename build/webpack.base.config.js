@@ -1,20 +1,20 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack')
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const config = require('../config')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-let configHtmlPlugins = [];
+let configHtmlPlugins = []
 for(page in config.entryPath){
   const htmlPlugin = new HtmlWebpackPlugin({
     filename: `${config.pagePath}/${page}.html`,
     template: path.resolve(__dirname, `../src/components/${page}/${page}.plan.js`),
     chunks: [page,'vendor']
-  });
-  configHtmlPlugins.push(htmlPlugin);
+  })
+  configHtmlPlugins.push(htmlPlugin)
 }
 
 module.exports = {
@@ -36,8 +36,17 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src')],
+        options: {
+          formatter: require('eslint-friendly-formatter')
+        }
+      },
+      {
         test: /\.hbs$/,
-        loader: "handlebars-loader",
+        loader: 'handlebars-loader',
         include: [resolve('src')],
         query: {
           helperDirs: path.resolve(__dirname, '../src/helpers'),
@@ -46,7 +55,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         include: [resolve('src')]
       },
       {
@@ -64,14 +73,14 @@ module.exports = {
           limit: 1000,
           name: `${config.staticPath}/fonts/[name].[hash:7].[ext]`
         }
-      },
+      }
     ]
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       names: 'vendor',
-      minChunks: Infinity
+      minChunks: 2
     }),
     ...configHtmlPlugins
   ]
-};
+}

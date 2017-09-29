@@ -1,2 +1,2 @@
 import './index.scss'
-const test = 1
+const test = "<div class= 'asd'>"

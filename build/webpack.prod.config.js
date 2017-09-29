@@ -11,7 +11,15 @@ module.exports = merge(baseWebpackConfig, {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader!postcss-loader!sass-loader'
+          use: [
+            {
+              loader: 'css-loader',
+              options:{
+                minimize: true //css压缩
+              }
+            },
+            'postcss-loader','sass-loader'
+          ]
         }),
         exclude: /node_modules/
       }

@@ -1,8 +1,7 @@
 import index from './index.hbs'
 import header from 'part/header/header.hbs'
-
 module.exports = index({
   header: header({
-    title: 687
+    title: '123'
   })
 })

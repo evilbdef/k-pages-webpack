@@ -8,11 +8,12 @@ function resolve (dir) {
 }
 
 let configHtmlPlugins = []
-for(page in config.entryPath){
+for (let page in config.entryPath) {
+  const template = path.resolve(__dirname, `../src/page/${page}/${page}.plan.js`)
   const htmlPlugin = new HtmlWebpackPlugin({
     filename: `${config.pagePath}/${page}.html`,
-    template: "babel-loader!"+path.resolve(__dirname, `../src/components/${page}/${page}.plan.js`),
-    chunks: [page,'vendor'],
+    template: template,
+    chunks: [page, 'vendor'],
     minify: { //压缩HTML文件
       removeComments: true, //移除HTML中的注释
       collapseWhitespace: false //删除空白符与换行符
@@ -34,7 +35,7 @@ module.exports = {
       '@': resolve('src'),
       'part': resolve('src/part'),
       'common': resolve('src/common'),
-      'components': resolve('src/components')
+      'page': resolve('src/page')
     }
   },
   module: {
@@ -67,7 +68,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 1000,
-          name:`${config.staticPath}/img/[name].[hash:7].[ext]`
+          name: `${config.staticPath}/img/[name].[hash:7].[ext]`
         }
       },
       {

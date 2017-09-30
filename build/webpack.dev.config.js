@@ -1,6 +1,7 @@
 const path = require('path')
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const merge = require('webpack-merge')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const baseWebpackConfig = require('./webpack.base.config')
 const config = require('../config')
 
@@ -11,8 +12,8 @@ function resolve (dir) {
 module.exports = merge(baseWebpackConfig, {
   devtool: 'eval-source-map',
   devServer: {
-    port: 8080,    
-    inline:true,
+    port: 8080,
+    inline: true,
     contentBase: resolve('dist'),
     open: true,
     openPage: `${config.pagePath}/index.html`,
@@ -27,9 +28,25 @@ module.exports = merge(baseWebpackConfig, {
     rules: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+            'postcss-loader','sass-loader'
+          ]
+        }),
         exclude: /node_modules/
       }
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: `${config.staticPath}/css/[name].css`
+    })
+  ]
 })

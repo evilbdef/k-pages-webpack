@@ -1,10 +1,10 @@
 const path = require('path')
-const fs = require("fs")
+const fs = require('fs')
 
-const filePath = path.resolve(__dirname, '../src/components')
+const filePath = path.resolve(__dirname, '../src/page')
 let entryPath = {}
 fs.readdirSync(filePath).forEach((ele, index) => {
-  entryPath[ele] = path.resolve(__dirname, `../src/components/${ele}/${ele}.js`)
+  entryPath[ele] = path.resolve(__dirname, `../src/page/${ele}/${ele}.js`)
 })
 
 module.exports = {

@@ -5,11 +5,15 @@ module.exports = {
     es6: true,
     node: true,
   },
+  extends: 'standard',
   parserOptions: {
     sourceType: 'module',
   },
   rules: {
-    'semi': [2, 'never'],
-    'comma-dangle': [2, 'never']
-  },
+    'arrow-parens': 0,
+    'generator-star-spacing': 0,
+    'no-debugger': process.env.NODE_ENV === 'prod' ? 2 : 0,
+    'eol-last': 0,
+    'space-before-function-paren': 0
+  }
 };

@@ -2,6 +2,7 @@
 html,body,div,h1,h2,h3,h4,p,ul,li,input{
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 html,body{
   font: $fs-de Arial,"Microsoft Yahei";
@@ -17,4 +18,7 @@ input,input:focus{
 }
 ul,li{
   list-style: none;
+}
+div{
+  background-color: red;
 }

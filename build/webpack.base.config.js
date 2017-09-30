@@ -21,6 +21,21 @@ for (let page in config.entryPath) {
   })
   configHtmlPlugins.push(htmlPlugin)
 }
+let jsLoaderOptions
+if(config.isIe){
+  jsLoaderOptions = {
+    test: /\.js$/,
+    loader: 'es3ify-loader!babel-loader',
+    enforce: 'post',
+    include: [resolve('src')]
+  }
+}else{
+  jsLoaderOptions = {
+    test: /\.js$/,
+    loader: 'babel-loader',
+    include: [resolve('src')]
+  }
+}
 
 module.exports = {
   entry: config.entryPath,
@@ -58,11 +73,12 @@ module.exports = {
           inlineRequires: '/images/'
         }
       },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src')]
-      },
+      // {
+      //   test: /\.js$/,
+      //   loader: 'babel-loader',
+      //   include: [resolve('src')]
+      // },
+      jsLoaderOptions,
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',

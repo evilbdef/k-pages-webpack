@@ -4,6 +4,28 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const baseWebpackConfig = require('./webpack.base.config')
 const config = require('../config')
 
+let UglifyJsPluginOptions = {
+  compress: {
+    warnings: false
+  },
+  output: {
+    comments: false
+  }
+}
+if(config.isIe){
+  UglifyJsPluginOptions = merge(UglifyJsPluginOptions, {
+    compress: {
+      properties: false,
+    },
+    output: {
+      // beautify: true,
+      quote_keys: true
+    },
+    mangle: {
+      screw_ie8: false
+    }
+  })
+}
 module.exports = merge(baseWebpackConfig, {
   module: {
     rules: [
@@ -14,7 +36,7 @@ module.exports = merge(baseWebpackConfig, {
           use: [
             {
               loader: 'css-loader',
-              options:{
+              options: {
                 minimize: true //css压缩
               }
             },
@@ -29,13 +51,6 @@ module.exports = merge(baseWebpackConfig, {
     new ExtractTextPlugin({
       filename: `${config.staticPath}/css/[name].css`
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      output: {
-        comments: false
-      }
-    })
+    new webpack.optimize.UglifyJsPlugin(UglifyJsPluginOptions)
   ]
 })

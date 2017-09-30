@@ -11,5 +11,6 @@ module.exports = {
   entryPath: entryPath,
   assetsRoot: path.resolve(__dirname, '../dist'),
   pagePath: 'page',
-  staticPath: 'static'
+  staticPath: 'static',
+  isIe: true
 }

@@ -70,21 +70,17 @@ module.exports = {
         include: [resolve('src')],
         query: {
           helperDirs: path.resolve(__dirname, '../src/helpers'),
-          inlineRequires: '/images/'
+          // inlineRequires: '/images/'
+          inlineRequires: /^((?!http|https).)*images((?!http|https).)*$/
         }
       },
-      // {
-      //   test: /\.js$/,
-      //   loader: 'babel-loader',
-      //   include: [resolve('src')]
-      // },
       jsLoaderOptions,
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 1000,
-          name: `${config.staticPath}/img/[name].[hash:7].[ext]`
+          name: `${config.staticPath}/img/[name].[ext]`
         }
       },
       {
@@ -92,7 +88,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 1000,
-          name: `${config.staticPath}/fonts/[name].[hash:7].[ext]`
+          name: `${config.staticPath}/fonts/[name].[ext]`
         }
       }
     ]

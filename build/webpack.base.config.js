@@ -65,6 +65,10 @@ module.exports = {
         }
       },
       {
+        test: require.resolve('jquery'),
+        loader: 'expose-loader?$!expose-loader?jQuery'
+      },
+      {
         test: /\.hbs$/,
         loader: 'handlebars-loader',
         include: [resolve('src')],
@@ -97,6 +101,12 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       names: 'vendor',
       minChunks: 2
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      'window.$': 'jquery',
     }),
     ...configHtmlPlugins
   ]

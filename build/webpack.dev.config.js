@@ -12,11 +12,13 @@ function resolve (dir) {
 module.exports = merge(baseWebpackConfig, {
   devtool: 'eval-source-map',
   devServer: {
-    port: 8080,
+    port: config.port,
+    host: '0.0.0.0',
+    disableHostCheck: true,
     inline: true,
     contentBase: resolve('dist'),
-    open: true,
-    openPage: `${config.pagePath}/index.html`,
+    open: `http://localhost:${config.port}/${config.pagePath}`,
+    // openPage: `${config.pagePath}/index.html`,
     compress: true,
     progress: true,
     overlay: {

@@ -8,6 +8,7 @@ fs.readdirSync(filePath).forEach((ele, index) => {
 })
 
 module.exports = {
+  port: 8080,
   entryPath: entryPath,
   assetsRoot: path.resolve(__dirname, '../dist'),
   pagePath: 'page',

@@ -75,7 +75,7 @@ module.exports = {
         query: {
           helperDirs: path.resolve(__dirname, '../src/helpers'),
           // inlineRequires: '/images/'
-          inlineRequires: /^((?!http|https).)*images((?!http|https).)*$/
+          inlineRequires: /^((?!http|https).)*(images|media|file)((?!http|https).)*$/
         }
       },
       jsLoaderOptions,
@@ -85,6 +85,22 @@ module.exports = {
         options: {
           limit: 1000,
           name: `${config.staticPath}/img/[name].[ext]`
+        }
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: `${config.staticPath}/media/[name].[ext]`
+        }
+      }, 
+      {
+        test: /\.(docx|ppt|xlsx|pdf|txt)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 1,
+          name: `${config.staticPath}/file/[name].[ext]`
         }
       },
       {

@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const baseWebpackConfig = require('./webpack.base.config')
+const baseWebpackConfig = require('./webpack.base.conf')
 const config = require('../config')
 
 let UglifyJsPluginOptions = {

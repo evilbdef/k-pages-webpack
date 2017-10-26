@@ -1,2 +1,2 @@
+import 'common/scss/start.scss'
 import './index.scss'
-import 'part/header/header.js'

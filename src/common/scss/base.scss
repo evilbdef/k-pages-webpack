@@ -5,10 +5,9 @@ html,body,div,h1,h2,h3,h4,p,ul,li,input{
   box-sizing: border-box;
 }
 html,body{
-  font: $fs-de Arial,"Microsoft Yahei";
+  font: $fs-de -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
 }
 a{
-  color: inherit;
   text-decoration: none;
 }
 input,input:focus{
@@ -18,7 +17,4 @@ input,input:focus{
 }
 ul,li{
   list-style: none;
-}
-div{
-  background-color: red;
 }

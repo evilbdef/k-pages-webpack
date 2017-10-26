@@ -1,7 +1,6 @@
 import index from './index.hbs'
-import header from 'part/header/header.hbs'
+import footer from 'part/footer/footer.hbs'
 module.exports = index({
-  header: header({
-    title: '123'
-  })
+  title: '首页',
+  footer
 })

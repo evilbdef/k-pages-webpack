@@ -74,8 +74,9 @@ module.exports = {
         include: [resolve('src')],
         query: {
           helperDirs: path.resolve(__dirname, '../src/helpers'),
-          // inlineRequires: '/images/'
-          inlineRequires: /^((?!http|https).)*(images|media|file)((?!http|https).)*$/
+          rootRelative: './',
+          inlineRequires: /^((?!http|https).)*(images|media|file)((?!http|https).)*$/,
+          exclude: '/node_modules/'
         }
       },
       jsLoaderOptions,

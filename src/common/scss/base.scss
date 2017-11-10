@@ -5,10 +5,11 @@ html,body,div,h1,h2,h3,h4,p,ul,li,input{
   box-sizing: border-box;
 }
 html,body{
-  font: $fs-de -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
 }
-a{
+a, a:link, a:visited, a:hover, a:active{
   text-decoration: none;
+  outline: none;
 }
 input,input:focus{
   border: 0;

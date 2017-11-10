@@ -1,3 +1,3 @@
-module.exports = function(e) {
-	return e+'.html'
+module.exports = function (e) {
+  return '/page/' + e + '.html'
 }

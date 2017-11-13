@@ -13,7 +13,7 @@
 ├─build
 	├─webpack.base.conf.js #webpack基础配置
 	├─webpack.dev.conf.js #webpack开发模式配置
-	├─webpack.prod.conf.js #webpack生成模式配置
+	├─webpack.prod.conf.js #webpack生产模式配置
 ├─config
 	├─index.js #配置文件参数
 ├─node_modules
